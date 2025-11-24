@@ -50,9 +50,9 @@ export class PlayersService {
     return player;
   }
 
-  async updatePlayer(email: string, updatePlayerDto: UpdatePlayerDto) {
+  async updatePlayer(id: string, updatePlayerDto: UpdatePlayerDto) {
     const updatedPlayer = await this.playerModel.findOneAndUpdate(
-      { email },
+      { _id: id },
       { $set: updatePlayerDto },
       { new: true },
     );
@@ -64,8 +64,8 @@ export class PlayersService {
     return updatedPlayer;
   }
 
-  async delete(email: string) {
-    const deletedPlayer = await this.playerModel.findOneAndDelete({ email });
+  async delete(id: string) {
+    const deletedPlayer = await this.playerModel.findOneAndDelete({ _id: id });
 
     if (!deletedPlayer) {
       throw new NotFoundException('Player not exists in DB');

@@ -30,16 +30,13 @@ export class PlayersController {
     return this.playersService.findPlayerById(id);
   }
 
-  @Patch(':email')
-  update(
-    @Param('email') email: string,
-    @Body() updatePlayerDto: UpdatePlayerDto,
-  ) {
-    return this.playersService.updatePlayer(email, updatePlayerDto);
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updatePlayerDto: UpdatePlayerDto) {
+    return this.playersService.updatePlayer(id, updatePlayerDto);
   }
 
-  @Delete(':email')
-  delete(@Param('email') email: string) {
-    return this.playersService.delete(email);
+  @Delete(':id')
+  delete(@Param('id') id: string) {
+    return this.playersService.delete(id);
   }
 }
