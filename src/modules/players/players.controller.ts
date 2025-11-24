@@ -25,9 +25,9 @@ export class PlayersController {
     return this.playersService.findAllPlayers();
   }
 
-  @Get(':email')
-  findPlayerByEmail(@Param('email') email: string) {
-    return this.playersService.findPlayerByEmail(email);
+  @Get(':id')
+  findPlayerById(@Param('id') id: string) {
+    return this.playersService.findPlayerById(id);
   }
 
   @Patch(':email')

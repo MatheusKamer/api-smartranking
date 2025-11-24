@@ -38,8 +38,8 @@ export class PlayersService {
     return this.playerModel.find();
   }
 
-  async findPlayerByEmail(email: string) {
-    const player = await this.playerModel.findOne({ email });
+  async findPlayerById(id: string) {
+    const player = await this.playerModel.findOne({ _id: id });
 
     if (!player) {
       throw new NotFoundException('Player not exists in DB');
