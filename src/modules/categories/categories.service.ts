@@ -93,9 +93,16 @@ export class CategoriesService {
   }
 
   async update(categoryName: string, updateCategoryDto: UpdateCategoryDto) {
+    let bodyToUpdate = {};
+
+    bodyToUpdate = {
+      description: updateCategoryDto.description,
+      events: updateCategoryDto.events,
+    };
+
     const updatedCategory = await this.categoryModel.findOneAndUpdate(
       { category: categoryName },
-      { $set: updateCategoryDto },
+      { $set: bodyToUpdate },
       { new: true },
     );
 

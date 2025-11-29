@@ -1,9 +1,7 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateCategoryDto } from './create-category.dto';
 import { ArrayMinSize, IsArray, IsOptional, IsString } from 'class-validator';
 import { Event } from '../schema/category.schema';
 
-export class UpdateCategoryDto extends PartialType(CreateCategoryDto) {
+export class UpdateCategoryDto {
   @IsOptional()
   @IsString()
   description?: string;
