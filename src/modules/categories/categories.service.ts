@@ -92,6 +92,24 @@ export class CategoriesService {
     return category;
   }
 
+  async findPlayerCategory(playerId: string) {
+    const categories = await this.categoryModel.find();
+
+    this.logger.log(`Category fetched: ${JSON.stringify(categories)}`);
+
+    const playerCategory = categories.find((category) =>
+      category.players.some((player) => player._id.toString() === playerId),
+    );
+
+    if (!playerCategory) {
+      throw new NotFoundException('Player does not belong to any category!');
+    }
+
+    this.logger.log(`Category fetched: ${JSON.stringify(playerCategory)}`);
+
+    return playerCategory;
+  }
+
   async update(categoryName: string, updateCategoryDto: UpdateCategoryDto) {
     let bodyToUpdate = {};
 

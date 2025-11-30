@@ -38,6 +38,11 @@ export class CategoriesController {
     return this.categoriesService.findCategoryByName(category);
   }
 
+  // @Get('player/:playerId')
+  // findPlayerCategory(@Param('playerId') playerId: string) {
+  //   return this.categoriesService.findPlayerCategory(playerId);
+  // }
+
   @Patch(':category')
   update(
     @Param('category') category: string,
